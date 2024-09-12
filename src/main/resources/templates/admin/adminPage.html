@@ -16,7 +16,11 @@
         <p class="navbar-brand text-white">
             <b><span class="align-middle" th:text="${user.name}"></span></b>
             <span class="align-middle">with roles:</span>
-            <span class="align-middle" th:text="${user.roles}"></span>
+            <span class="align-middle">
+                                        <th:block th:each="role: ${user.roles}"
+                                                  th:text="${role.role} + ' '">
+                                        </th:block>
+                                    </span>
         </p>
         <form th:action="@{/logout}" method="post">
             <button type="submit" class="btn btn-dark text-secondary">Logout</button>
@@ -69,7 +73,11 @@
                                         <td th:text="${user.surname}">surname</td>
                                         <td th:text="${user.age}">age</td>
                                         <td th:text="${user.email}">email</td>
-                                        <td th:text="${user.roles}">roles</td>
+                                        <td>
+                                        <th:block th:each="role: ${user.roles}"
+                                                  th:text="${role.role} + ' '">
+                                        </th:block>
+                                    </td>
                                         <td>
                                             <a type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                                data-bs-target="#editModal"
